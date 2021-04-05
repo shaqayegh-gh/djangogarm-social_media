@@ -1,0 +1,20 @@
+
+
+{% extends 'social/profile.html' %}
+{% load static %}
+
+
+{% block post_section %}
+    <div class="update-pro-div">
+        <table>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_table }}
+                <input value="save changes" type="submit">
+            </form>
+        </table>
+    </div>
+    <div>
+        <a href="{% url 'password_change' %}">change password</a>
+    </div>
+{% endblock %}

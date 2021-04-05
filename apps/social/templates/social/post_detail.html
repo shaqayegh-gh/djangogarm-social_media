@@ -1,0 +1,75 @@
+{% extends 'social/profile.html' %}
+{% load static %}
+
+{% block head %}
+    <link href="{% static 'social/css/post_detail_styles.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'social/css/home_styles.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'social/css/profile_styles.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'social/js/js.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+{% block post_section %}
+    <div class="post-container">
+        <div class="post-username">
+            <a href="{% url 'profile' %}">{{ profile.user.username }}</a>
+            <div class="post-nav tooltip">
+                <figure class="post-nav-icon"></figure>
+                <div class="post-subnav-content tooltiptext" id="post-subnav-content">
+                    <a href="{% url 'post_update' post_id=post.id %}">Edit</a>
+                    <a>Delete</a>
+                </div>
+            </div>
+        </div>
+
+        <img src="{{ post.photo.url }}" class="post-image">
+
+        <div class="post-likes">
+            <form method="post" class="post-likes-form">
+                {% csrf_token %}
+                <input type="hidden" value="{{ post.id }}"
+                       name="like_post_id">
+                <button type="submit" style="background-color: inherit" class="post-like-btn">
+                    <figure class="likes-icon"></figure>
+                </button>
+                {{ post.likes_count }}
+            </form>
+
+            <button type="button">
+                <figure class="comment-icon" id="{{ post.id }}" onclick="comment_form_display(this.id)"></figure>
+            </button>
+            {{ post.comments_count }}
+        </div>
+
+        <div class="post-caption">
+            <div class="post-caption-div" id="post-caption-div-{{ post.id }}">{{ post.caption }}</div>
+            <form method="post" class="post-comment" id="post-comment-{{ post.id }}">
+                {% csrf_token %}
+                <input type="text" name="comment_text" class="comment-text"
+                       value="Write your comment here...">
+                <button type="submit" class="post-comment-btn"
+                        value="{{ post.id }}" name="comment_post_id"> send
+                </button>
+            </form>
+            {% if post.comments.all %}
+                <div class="comments-div">
+                    <ul>
+                        {% for comment in post.comments.all %}
+                            {% if comment.is_active %}
+                                <li class="comment" id="{{ comment.id }}"
+                                    onclick="comment_delete_display(this.id)">
+                                    <p>{{ comment.user.username }} : {{ comment.content }}</p>
+                                    <form method="post" class="delete-comment">
+                                        {% csrf_token %}
+                                        <input value="{{ comment.id }}" type="hidden" name="comment_id">
+                                        <button type="submit" id="comment-delete-btn-{{ comment.id }}">Delete</button>
+                                    </form>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

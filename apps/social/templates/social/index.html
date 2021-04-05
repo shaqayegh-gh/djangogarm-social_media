@@ -1,0 +1,81 @@
+
+{% load static %}
+{% load social_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{% static 'social/css/index_styles.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'social/css/reset.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'social/css/post_detail_styles.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'social/css/activity_styles.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'social/js/js.js' %}" type="text/javascript"></script>
+    {% block head %}{% endblock %}
+</head>
+<body class="home-body">
+<div class="main-container">
+    <div class="left-sidebar sidebar ">
+        <div class="out-div tooltip">
+            <span class="tooltiptext">logout</span>
+            <a class="logout-a sidebar-a" href="{% url 'user_logout' %}">
+                logout
+            </a>
+            <iframe src="https://free.timeanddate.com/clock/i7qhh72c/n246/tlir/fs18/tct/pct/ftb/tt1/tw1" frameborder="0"
+                    width="213" height="23" allowtransparency="true" class="date"></iframe>
+            <iframe src="https://free.timeanddate.com/clock/i7qhh72c/n246/tlir/fs30/tct/pct/ftb" frameborder="0"
+                    width="122" height="37" allowtransparency="true"></iframe>
+
+        </div>
+        <div class="home-div tooltip">
+            <span class="tooltiptext">Home</span>
+            <a class="sidebar-a" href="{% url 'home' %}">
+                <figure class="home-icon"></figure>
+            </a>
+        </div>
+        <div class="explorer-div tooltip">
+            <span class="tooltiptext">Explorer</span>
+            <a class="sidebar-a" href="{% url 'explorer' %}">
+                <figure class="explorer-icon"></figure>
+            </a>
+        </div>
+    </div>
+
+    <div class="middle-container">
+        {% block middle-container %}
+
+        {% endblock %}
+    </div>
+
+    <div class="right-sidebar sidebar">
+        <div class="profile-div tooltip">
+            <span class="tooltiptext">Your profile</span>
+            <a class="sidebar-a" href="{% url 'profile' %}">
+                {% profile_photo user %}
+                <p class="profile-username">{{ user.username }}</p>
+            </a>
+        </div>
+
+        <div class="new-post-div tooltip">
+            <span class="tooltiptext">Add new post</span>
+            <a class="sidebar-a" href="{% url 'new_post' %}">
+                <figure class="newpost-icon"></figure>
+            </a>
+        </div>
+
+        <div class="activity-div tooltip">
+            <span class="tooltiptext">Activity</span>
+            <button class="sidebar-a" onclick="activity_display()">
+                <figure class="activity-icon" id="activity-icon"></figure>
+                <a class="like-activity-div activities-a" id="like-activity-div" href="{% url 'likes' %}">Likes</a>
+                <a class="comment-activity-div activities-a" id="comment-activity-div" href="{% url 'comments' %}">Comments</a>
+                <a class="request-activity-div activities-a" id="request-activity-div" href="{% url 'requests' %}">Follow requests</a>
+            </button>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>
+

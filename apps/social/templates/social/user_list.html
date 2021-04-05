@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="username">
+    <button type="submit">search</button>
+</form>
+
+<ul>
+    {% if search_results %}
+        {% for result in search_results %}
+            <li><a href="{% url 'others_profile' username=result.username %}">{{ result.username }}</a></li>
+        {% empty %}
+            no result
+        {% endfor %}
+    {% else %}
+        {% for user in object_list %}
+            <li><a href="{% url 'others_profile' username=user.username %}">{{ user.username }}</a></li>
+        {% endfor %}
+    {% endif %}
+</ul>
+
+
+</body>
+</html>

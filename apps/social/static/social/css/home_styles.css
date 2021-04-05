@@ -1,0 +1,154 @@
+
+.home-middle-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.post-container{
+    width: 650px;
+    height: auto;
+    background-color: white;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 8px 0 rgba(146, 142, 142, 0.2), 0 6px 20px 0 rgba(136, 133, 133, 0.2);
+
+}
+
+.posts-ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.post-container .post-username{
+    height: 7vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 20px 0 20px;
+    font-size: 20px;
+    justify-content: space-between;
+    position: relative;
+}
+.post-image{
+    height: 74vh;
+    width: 100%;
+}
+.post-caption{
+    height: auto ;
+    padding: 10px;
+    width: 100%;
+}
+
+.post-container .post-likes{
+    height: 4vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 20px 0 10px;
+
+}
+.post-likes-form{
+    height: 4vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 10px 0;
+}
+.post-container .post-likes>button{
+    height: auto;
+    width: auto;
+    margin-right: 10px;
+    background-color: inherit;
+
+}
+.post-container .post-likes .likes-icon{
+    background-image: url("../images/like-icon.png");
+    background-size: 30px 30px;
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    margin-right: 8px;
+}
+
+.post-comment{
+    display: none;
+    width: 100%;
+    height: 20vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.post-comment .comment-text{
+    height: 10vh;
+    width: 90%;
+    background-color: #292929;
+    color: #d8d2d4;
+    border-radius: 30px;
+    padding: 10px;
+}
+.post-comment>button{
+    border: 1px solid dimgray;
+    background-color: #339966;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+.comment-icon{
+    background-image: url("../images/comment-icon.png");
+    background-size: 25px 25px;
+    height: 25px;
+    width: 25px;
+    background-repeat: no-repeat;
+        margin-right: 8px;
+}
+.post-caption-div{
+    display: block;
+    height: auto;
+    width: 100%;
+    padding: 10px 0 20px 0;
+}
+
+.edit-profile-tooltip:hover .tooltiptext {
+    visibility: visible;
+
+}
+.post-nav{
+    height: auto;
+    width: auto;
+    right: 0;
+    border: none;
+}
+.post-nav-icon{
+    background-image: url("../images/threedot-icon");
+    background-size: 30px 3vh;
+    height: 3vh;
+    width: 30px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.post-subnav-content{
+    height: auto;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #1E90FF; !important;
+}
+.post-subnav-content>a{
+    width: inherit;
+    margin: 5px 0 5px;
+}
+.post-subnav-content>a:hover{
+    background-color: cornflowerblue;
+    border-radius:20px ;
+}

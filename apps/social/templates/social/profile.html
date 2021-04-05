@@ -1,0 +1,177 @@
+{% extends "social/index.html" %}
+{% load static %}
+
+{% block head %}
+    <link href="{% static 'social/css/profile_styles.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'social/css/home_styles.css' %}" rel="stylesheet" type="text/css">
+
+{% endblock %}
+
+{% block middle-container %}
+    <div class="profile-middle-container">
+        <header class="profile-header">
+            <div class="profile-photo-div">
+                <div class="photo">
+                    {% if profile.profile_photo %}
+                        <figure style="background-image:url('{{ profile.profile_photo.url }}')"></figure>
+                    {% else %}
+                        <figure style="background-image:url('{% static 'social/images/profile-1506810-1278719.webp' %}')"></figure>
+                    {% endif %}
+                    <p style="font-size: 12px">{{ user.username }}</p>
+                </div>
+                <div class="edit-div">
+                    <a href="{% url 'profile_update' username=profile.user.username %}">
+                        <figure class="profile-edit-icon"></figure>
+                    </a>
+                    <div class="profile-bio-icon edit-profile-tooltip">
+                        <figure class="profile-bio-icon"></figure>
+                        {% if profile.bio %}
+                            <span class="tooltiptext">{{ profile.bio }}</span>
+                        {% else %}
+                            <span class="tooltiptext">No biography yet</span>
+                        {% endif %}
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="posts-nm-div">
+                <a>
+                    <h3>Posts</h3>
+                    <h3>{{ profile.posts.all.count }}</h3>
+                </a>
+            </div>
+            <div class="following-nm-div posts-nm-div">
+                <a onclick="show_following()">
+                    <h3>Following</h3>
+                    <h3>{{ profile.get_following.count }}</h3>
+                </a>
+                <div class="follower-dpd">
+                    <ul class="follower-dpd-content" id="following-dpd-content">
+                        {% for following in following_list %}
+                            <li>{{ following.user.username }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+            <div class="followers-nm-div posts-nm-div">
+                <a onclick="show_followers()">
+                    <h3>Followers</h3>
+                    <h3>{{ profile.get_followers.count }}</h3>
+                </a>
+                <div class="follower-dpd">
+                    <ul class="follower-dpd-content" id="follower-dpd-content">
+                        {% for follower in follower_list %}
+                            <li>{{ follower.user.username }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        {% block post_section %}
+            <ul class="posts-ul">
+                {% if user_posts %}
+                    {% for post in user_posts %}
+
+                        <div class="post-container">
+                            <div class="post-username">
+                                <a href="{% url 'profile' %}">{{ profile.user.username }}</a>
+                                <div class="post-nav tooltip">
+                                    <figure class="post-nav-icon"></figure>
+                                    <div class="post-subnav-content tooltiptext" id="post-subnav-content">
+                                        <a href="{% url 'post_update' post_id=post.id %}">Edit</a>
+                                        <a href="{% url "post_detail" post_id=post.id %}">Detail</a>
+                                        <form method="post">{% csrf_token %}
+                                            <input type="hidden" value="{{ post.id }}" name="deleted_post_id">
+                                            <button class="delete-post-btn" type="submit">Delete</button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <li>
+                                <img src="{{ post.photo.url }}" class="post-image">
+                            </li>
+                            <div class="post-likes">
+                                <form method="post" class="post-likes-form">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="{{ post.id }}"
+                                           name="like_post_id">
+                                    <button type="submit" style="background-color: inherit" class="post-like-btn">
+                                        <figure class="likes-icon"></figure>
+                                    </button>
+                                    {{ post.likes_count }}
+                                </form>
+
+                                <button type="button">
+                                    <figure class="comment-icon" id="{{ post.id }}"
+                                            onclick="comment_form_display(this.id)"></figure>
+                                </button>
+                                {{ post.comments_count }}
+                            </div>
+
+                            <div class="post-caption">
+                                <div class="post-caption-div"
+                                     id="post-caption-div-{{ post.id }}">{{ post.caption }}</div>
+                                <form method="post" class="post-comment" id="post-comment-{{ post.id }}">
+                                    {% csrf_token %}
+                                    <input type="text" name="comment_text" class="comment-text"
+                                           value="Write your comment here...">
+                                    <button type="submit" class="post-comment-btn"
+                                            value="{{ post.id }}" name="comment_post_id"> send
+                                    </button>
+                                </form>
+                                {% if post.comments.all %}
+                                    <div class="comments-div">
+                                        <ul>
+                                            {% for comment in post.comments.all %}
+                                                {% if comment.is_active %}
+                                                    <li class="comment" id="{{ comment.id }}"
+                                                        onclick="comment_delete_display(this.id)">
+                                                        <p>{{ comment.user.username }} : {{ comment.content }}</p>
+                                                        <form method="post" class="delete-comment">
+                                                            {% csrf_token %}
+                                                            <input value="{{ comment.id }}" type="hidden"
+                                                                   name="comment_id">
+                                                            <button type="submit"
+                                                                    id="comment-delete-btn-{{ comment.id }}">Delete
+                                                            </button>
+                                                        </form>
+                                                    </li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        {% endblock %}
+    </div>
+
+    <script>
+        function show_followers() {
+            var x = document.getElementById('follower-dpd-content');
+            if (x.style.display === "none") {
+                x.style.display = "flex";
+            } else {
+                x.style.display = "none";
+            }
+
+        }
+        function show_following() {
+            var x = document.getElementById('following-dpd-content');
+            if (x.style.display === "none") {
+                x.style.display = "flex";
+            } else {
+                x.style.display = "none";
+            }
+
+        }
+    </script>
+{% endblock %}

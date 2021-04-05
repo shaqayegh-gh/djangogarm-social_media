@@ -1,0 +1,134 @@
+.login-body{
+  background: url(../images/register-main-screen1.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'RobotoSlab-medium',sans-serif;
+
+}
+
+.main-screen{
+    height: 355px;
+    width: 1006px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    position: absolute;
+    margin: 224px 328px;
+    display: flex;
+}
+
+.login-welcome{
+    width: 390px;
+    height: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 187px;
+    margin: 30px 0;
+    padding-left: 42px;
+}
+.welcome{
+    opacity: 70%;
+
+}
+.welcome-sub{
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 80%;
+    margin-top: 7px;
+}
+
+.join-us{
+    width: 110px;
+    height: 50px;
+    margin-top: 13px;
+    font-size: 23px;
+    background-image: url(../images/wood.jfif);
+    background-size: 200px 100px;
+    color: antiquewhite;
+    font-weight: 800;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.join-us:hover{
+    width: 120px ;
+    height: 52px ;
+    transition: width .5s ,height .5s;
+}
+
+.login-tb{
+    height: 103px;
+    width: 376px;
+    font-size: 20px;
+
+}
+.login-tb>tbody{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.login-in>input{
+    height: 30px;
+    width: 205px;
+    border-radius: 7px;
+    border: #297c40 solid 2px;
+}
+
+.login-tr{
+    width: 93%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.login-btn{
+    width: 100px;
+    height: 36px;
+    background-color: #297c40;
+    opacity: 85%;
+    font-size: 20px;
+    font-weight: 800;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.login-btn:hover{
+    opacity: 100%;
+    transition: opacity .5s;
+}
+
+.login-uw-div{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 165px;
+    margin-top: 175px;
+    align-items: center;
+}
+.login-uw-div1{
+    height: 357px;
+    width: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+
+}
+
+.login-th{
+    background-color: #d8d2d4;
+    padding: 4px;
+    border-radius: 7px;
+}
+
+
+.login-mes {
+    position: absolute;
+    margin-top: 106px;
+    text-align: center;
+}

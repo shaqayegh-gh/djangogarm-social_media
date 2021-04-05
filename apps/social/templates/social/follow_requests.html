@@ -1,0 +1,25 @@
+{% extends 'social/index.html' %}
+{% load static %}
+
+{% block middle-container %}
+    <ul class="follow-middle-container">
+        {% for request in follow_requests %}
+            <li>{% if request.current_profile.profile_photo %}
+                <figure class="request-photo like-photo"
+                        style="background-image: url('{{ request.current_profile.profile_photo.url }}')"></figure>
+            {% else %}
+                <figure class="request-photo like-photo"
+                        style="background-image: url('../../static/social/images/profile-1506810-1278719.webp')"></figure>
+            {% endif %}
+                {{ request.current_profile.user.username }} has request to follow you
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="accept-request-btn"  name="accept_request" value="{{ request.id }}">Accept</button>
+                    <button type="submit" class="delete-request-btn" name="delete_request" value="{{ request.id }}">Delete</button>
+                </form>
+            </li>
+        {% empty %}
+            no request yet
+        {% endfor %}
+    </ul>
+{% endblock %}

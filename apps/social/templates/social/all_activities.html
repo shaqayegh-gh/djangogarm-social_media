@@ -1,0 +1,28 @@
+{% extends 'social/index.html' %}
+{% load static %}
+
+{% block middle-container %}
+    <div class="activity-middle-container">
+{#        <div class="previous-page">#}
+{#            <figure class="previous-page-icon"></figure>#}
+{#        </div>#}
+        <div class="activity-container">
+            <ul class="today-activity-ul">
+                {% block today-activity-ul %}
+                {% endblock %}
+            </ul>
+            <ul class="week-activity-ul">
+                {% block week-activity-ul %}
+                {% endblock %}
+            </ul>
+            <ul class="month-activity-ul">
+                {% block month-activity-ul %}
+                {% endblock %}
+            </ul>
+        </div>
+{#        <div class="next-page">#}
+{#            <figure class="next-page-icon"></figure>#}
+{#        </div>#}
+
+    </div>
+{% endblock %}

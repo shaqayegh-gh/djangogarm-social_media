@@ -1,0 +1,44 @@
+
+.explorer-header {
+    min-height: 5vh;
+    height: auto;
+    margin-bottom: 20px;
+
+}
+.explorer-header>ul{
+    color: #d8d2d4;
+    font-size: 15px;
+}
+.explorer-header>form>input{
+    height: 4vh;
+    width: 200px;
+}
+.explorer-header>form>button{
+    height: 4vh;
+    width: 60px;
+    font-size: 15px;
+}
+.explorer-header>span{
+    color: whitesmoke;
+}
+.explorer-middle-container {
+    height: 100%;
+    width: 100%;
+}
+
+.explorer-middle-container > ul {
+    height: auto;
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.exp-post-image {
+    width: 252.3px;
+    height: 200px;
+}

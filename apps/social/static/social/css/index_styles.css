@@ -1,0 +1,206 @@
+.home-body{
+    background: black fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'RobotoSlab-medium',sans-serif;
+}
+
+.main-container{
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background: #292929 fixed;
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.sidebar{
+    height: 100vh;
+    width: 15%;
+    background: aqua;
+    display: flex;
+    flex-direction: column;
+
+}
+.sidebar>div{
+    height: 33.3333333vh;
+    width: 100%;
+    border: solid #292929;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.sidebar>div:hover{
+    border: 0 ;
+}
+
+/*right sidebar*/
+.right-sidebar>div .tooltiptext{
+    top: 15px;
+    right: 105%;
+}
+.sidebar-a{
+    height: inherit;
+    width: inherit;
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.sidebar-a>a:hover{
+    background-color: #CCFFFF;
+}
+.sidebar>div:hover{
+    background-color: #292929;
+    transition: background-color .5s;
+}
+
+.profile-div{
+    /*background: #A576FF;*/
+    background: #273746 ;
+}
+.profile-photo{
+    background-image: url("https://cdn.iconscout.com/icon/premium/png-256-thumb/profile-1506810-1278719.png");
+    background-size: 100% 100%;
+    width: 89%;
+    height: 80%;
+    background-repeat: no-repeat;
+    background-color: #292929;
+    border-radius: 100%;
+}
+.profile-username{
+    font-size: 20px;
+    color: #d8d2d4;
+}
+.new-post-div{
+    /*background: #FFBC2F;*/
+    background: #273746 ;
+}
+.newpost-icon{
+    background-image: url("../images/plus.png");
+    background-size: 100% 100%;
+    width: 90%;
+    height: 85%;
+    background-repeat: no-repeat;
+    border-radius: 116px;
+}
+.activity-div{
+    /*background: #1E90FF;*/
+    background: #273746 ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.activity-icon{
+    background-image: url("../images/activity-icon.png");
+    background-size: 100% 100%;
+    width: 93%;
+    height: 93%;
+    background-repeat: no-repeat;
+    display: block;
+}
+
+
+/*left sidebar*/
+.out-div{
+    /*background: #8FFF49 ;*/
+    background: #273746 ;
+    justify-content: flex-start;
+}
+.home-div{
+    /*background: #FF6633;*/
+    background: #273746 ;
+}
+.home-icon{
+    background-image: url("../images/home.png");
+    background-size: 100% 100%;
+    width: 90%;
+    height: 85%;
+    background-repeat: no-repeat;
+    border-radius: 116px;
+}
+.explorer-div{
+    /*background: #339966 ;*/
+    background: #273746 ;
+}
+.explorer-icon{
+    background-image: url("../images/explorer-icon.png");
+    background-size: 100% 100%;
+    width: 90%;
+    height: 85%;
+    background-repeat: no-repeat;
+    border-radius: 116px;
+}
+.left-sidebar>div .tooltiptext{
+    top: 15px;
+    left: 105%;
+}
+
+
+/*middle screen*/
+.middle-container{
+    width: 70%;
+    height: 100%;
+    padding: 25px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Tooltip container */
+ .tooltip {
+     position: relative;
+     display: inline-block;
+     border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+ }
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: gray;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.activities-a{
+    width: 150px;
+    height: 5vh;
+    background-color: #d8d2d4;
+    display: none;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.logout-a{
+    height: 25%;
+    width: 103px;
+    border: black 1px solid;
+    font-size: 20px;
+    color: #d8d2d4;
+}
+
+.date{
+    margin-top: 10px;
+    color: #d8d2d4;
+}

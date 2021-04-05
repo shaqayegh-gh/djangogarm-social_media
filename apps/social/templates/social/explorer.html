@@ -1,0 +1,53 @@
+{% extends 'social/index.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'social/css/explorer-styles.css' %}" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet"
+          type="text/css"/>
+{% endblock %}
+
+{% block middle-container %}
+    <div class="explorer-middle-container">
+        <div class="explorer-header">
+
+            <form method="post">
+            {% csrf_token %}
+                <input type="text" id="tags" name="search">
+                <script>
+                    $(function () {
+                        var availableTags = [
+                            {% for user in users_list %}
+                                "{{user.username}}",
+                            {% endfor %}
+                        ];
+                        $("#tags").autocomplete({
+                            source: availableTags
+                        });
+                    });
+                </script>
+                <button type="submit">Search</button>
+            </form>
+            <ul>
+                {% if search_results %}
+                    {% for result in search_results %}
+                        <li class=""><a href="{% url 'others_profile' username=result.username %}">{{ result.username }}</a></li>
+                    {% empty %}
+                        No result
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <a href="{% url 'others_profile' username=post.profile.user.username %}"><img
+                            src="{{ post.photo.url }}" class="exp-post-image"></a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

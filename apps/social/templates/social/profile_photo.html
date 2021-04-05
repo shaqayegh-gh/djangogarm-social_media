@@ -1,0 +1,8 @@
+
+
+{% if current_profile.profile_photo %}
+    <figure class="profile-photo"
+            style="background-image: url('{{ current_profile.profile_photo.url }}')"></figure>
+{% else %}
+    <figure class="profile-photo"></figure>
+{% endif %}

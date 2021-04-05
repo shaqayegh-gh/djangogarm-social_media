@@ -1,0 +1,34 @@
+{% extends 'social/all_activities.html' %}
+{% load static %}
+{% load social_tags %}
+
+{% block today-activity-ul %}
+    <li class="like-activity-li" style="color: #1E90FF">Today</li>
+    {% for like in likes|today_time_check %}
+        <li class="like-activity-li">
+            {{ like.user.username }} liked
+            <figure class="like-photo" style="background-image: url('{{ like.post.photo.url }}')"></figure>
+            on {{ like.date_created | date }}
+        </li>
+    {% endfor %}
+{% endblock %}
+{% block week-activity-ul %}
+    <li class="like-activity-li" style="color: #1E90FF">This week</li>
+    {% for like in likes|week_time_check %}
+        <li class="like-activity-li">
+            {{ like.user.username }} liked
+            <figure class="like-photo" style="background-image: url('{{ like.post.photo.url }}')"></figure>
+            on {{ like.date_created | date }}
+        </li>
+    {% endfor %}
+{% endblock %}
+{% block month-activity-ul %}
+    <li class="like-activity-li" style="color: #1E90FF">This month</li>
+    {% for like in likes|month_time_check %}
+        <li class="like-activity-li">
+            {{ like.user.username }} liked
+            <figure class="like-photo" style="background-image: url('{{ like.post.photo.url }}')"></figure>
+            on {{ like.date_created | date }}
+        </li>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'social/css/login-user.css' %}" rel="stylesheet" type="text/css">
+{#    <link href="{% static 'social/bootstrap-5.0.0-beta2-dist/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">#}
+    <link href="{% static 'social/css/reset.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'social/css/fonts.css' %}" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>login</title>
+</head>
+<body class="login-body">
+
+<div class="main-screen" id="main-screen">
+
+    <div class="login-welcome" id="login-welcome">
+        <h2 class="welcome">WELCOME TO DJANGOGRAM</h2>
+        <p class="welcome-sub">Your best times will be spent here</p>
+        <a href="{% url 'signup' %}">
+            <button class="join-us">Join Us</button>
+        </a>
+    </div>
+
+    <div class="login-uw-div1" id="login-uw-div1">
+        <p class="login-mes">
+            {{ message }}
+        </p>
+
+        <form action='' method="post" class="login-uw-div">
+            {% csrf_token %}
+            <table class="login-tb">
+                <tr class="login-tr">
+                    <th class="login-th">{{ form.username.label_tag }}</th>
+                    <td class="login-in">{{ form.username }}</td>
+                </tr>
+                <tr class="login-tr">
+                    <th class="login-th">{{ form.password.label_tag }}</th>
+                    <td class="login-in">{{ form.password }}</td>
+                </tr>
+            </table>
+            <input type="submit" value="login" class="login-btn"/>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

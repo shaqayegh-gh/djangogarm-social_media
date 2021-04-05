@@ -1,0 +1,166 @@
+.register-body {
+    /*background: url(../images/old-wooden-texture-background-vintage_55716-1138.jpg) no-repeat center center fixed;*/
+    background-color: #292929;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'RobotoSlab-medium', sans-serif;
+    position: relative;
+}
+
+.main-screen {
+    position: absolute;
+    height: 75vh;
+    width: 45%;
+    background-color: #297c40;
+    margin: 6% 28%;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 8px 6px -6px black;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-form {
+    height: 100%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-form > table {
+    height: 100%;
+}
+
+.register-form > div {
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.register-ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.register-ul > li {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.register-ul > li > div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+}
+
+.register-ul > li > div > input {
+    height: 4vh;
+    width: 50%;
+    padding: 0 10px;
+}
+
+.register-ul > li > span {
+    margin-top: 3px;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.register-ul > li > span > ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.sms-verify-btn {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #1E90FF;
+    cursor: pointer;
+    box-shadow: 0 8px 6px -6px black;
+
+}
+
+.errors-text {
+    color: darkred;
+}
+
+
+/*sms-verify*/
+.verify-main-screen {
+    position: absolute;
+    height: 40vh;
+    width: 32%;
+    background-color: #297c40;
+    margin: 15% 34%;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 8px 6px -6px black;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sms-verify-form {
+    height: 80%;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sms-verify-form > input {
+    height: 5vh;
+    width: 90%;
+    padding: 0 10px;
+    font-size: 19px;
+    text-align: center;
+    background-color: inherit;
+}
+
+.sms-verify-form > button {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #1E90FF;
+    cursor: pointer;
+    box-shadow: 0 8px 6px -6px black;
+}
+
+.sms-verify-form > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sms-verify-form > div > input {
+    height: 5vh;
+    width: 90%;
+    padding: 0 10px;
+    font-size: 19px;
+    text-align: center;
+    margin-left: 10px;
+}

@@ -1,0 +1,29 @@
+
+
+{% extends 'social/index.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'social/css/new_post_styles.css' %}" type="text/css">
+{% endblock %}
+
+{% block middle-container %}
+    <div class="newpost-middle-container">
+        <form action="" method="post" enctype="multipart/form-data" class="newpost-form">
+            {% csrf_token %}
+            <table class="newpost-tb">
+                <tr class="newpost-tr">
+                    <th class="newpost-th">Photo :</th>
+                    <td class="newpost-photo-td" style="color: antiquewhite">{{ form.photo }}</td>
+                </tr>
+                <tr class="newpost-tr">
+                    <th class="newpost-th">Caption :</th>
+                    <td class="newpost-cap-td">{{ form.caption }}</td>
+                </tr>
+            </table>
+            <div class="post-submit">
+                <input type="submit" value="post" class="submit-btn">
+                <input type="reset" value="reset" class="reset-btn">
+            </div>
+        </form>
+    </div>
+{% endblock %}

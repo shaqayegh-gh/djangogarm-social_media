@@ -1,0 +1,62 @@
+{% extends 'social/all_activities.html' %}
+{% load static %}
+{% load social_tags %}
+{% block head %}
+    <script src="{% static 'social/js/js.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+{% block today-activity-ul %}
+    <script>
+        function show_comment_content(comment_id) {
+            var x = document.getElementById('comment-content-' + comment_id);
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+    <li class="comment-activity-division" style="color: #1E90FF">Today</li>
+    {% for comment in comments|today_time_check %}
+        <li class="comment-activity-li" id='{{ comment.id }}' onclick="show_comment_content(this.id)">
+            <div class="comment-activity-division">
+                {{ comment.user.username }} comments on
+                <figure class="like-photo" style="background-image: url('{{ comment.post.photo.url }}')"></figure>
+                on {{ comment.date_created | date }}
+            </div>
+            <div class="comment-content" id="comment-content-{{ comment.id }}">
+                {{ comment.content }}
+            </div>
+        </li>
+    {% endfor %}
+{% endblock %}
+{% block week-activity-ul %}
+    <li class="comment-activity-division" style="color: #1E90FF">This week</li>
+    {% for comment in comments|week_time_check %}
+        <li class="comment-activity-li" id='{{ comment.id }}' onclick="show_comment_content(this.id)">
+            <div class="comment-activity-division">
+                {{ comment.user.username }} comments on
+                <figure class="like-photo" style="background-image: url('{{ comment.post.photo.url }}')"></figure>
+                on {{ comment.date_created | date }}
+            </div>
+            <div class="comment-content" id="comment-content-{{ comment.id }}">
+                {{ comment.content }}
+            </div>
+        </li>
+    {% endfor %}
+{% endblock %}
+{% block month-activity-ul %}
+    <li class="comment-activity-division" style="color: #1E90FF">This month</li>
+    {% for comment in comments|month_time_check %}
+        <li class="comment-activity-li" id='{{ comment.id }}' onclick="show_comment_content(this.id)">
+            <div class="comment-activity-division">
+                {{ comment.user.username }} comments on
+                <figure class="like-photo" style="background-image: url('{{ comment.post.photo.url }}')"></figure>
+                on {{ comment.date_created | date }}
+            </div>
+            <div class="comment-content" id="comment-content-{{ comment.id }}">
+                {{ comment.content }}
+            </div>
+        </li>
+    {% endfor %}
+{% endblock %}
